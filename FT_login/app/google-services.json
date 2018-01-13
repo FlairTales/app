@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "139298520913",
+    "firebase_url": "https://ftlogin-5b264.firebaseio.com",
+    "project_id": "ftlogin-5b264",
+    "storage_bucket": "ftlogin-5b264.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139298520913:android:3e18140fbcae2830",
+        "android_client_info": {
+          "package_name": "com.example.akash.ft_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139298520913-3be07mvulb0opq3sstocf3cqdo1egqih.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.akash.ft_login",
+            "certificate_hash": "86f2020ce03edd9e3c4094267aeabd54ad3c1d7e"
+          }
+        },
+        {
+          "client_id": "139298520913-jdjti9nq0pm9pm7p5bfh1g84rd934glr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4Y6NP2rjMOtEVNxWp_mPm73x4juD2yI4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139298520913-jdjti9nq0pm9pm7p5bfh1g84rd934glr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
