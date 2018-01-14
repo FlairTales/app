@@ -196,9 +196,10 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     }
 
     private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
+        // Log.d(TAG, "signIn:" + email);
         user = mAuth.getCurrentUser();
 
+        Log.d(TAG, "signIn:" + user);
         if(user.isEmailVerified()) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -208,8 +209,6 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
                                 Log.d(TAG, "signInWithEmail:success");
                                 Toast.makeText(SignupActivity.this, "SignIn Successful !",
                                         Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(SignupActivity.this, SignedInActivity.class);
-                                startActivity(intent);
                             } else {
                                 Log.w(TAG, "signInWithEmail:failure", task.getException());
                                 Toast.makeText(SignupActivity.this, "Authentication failed.",
@@ -227,7 +226,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
 
     private void sendEmailVerification() {
 
-        final FirebaseUser user = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
         user.sendEmailVerification()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
