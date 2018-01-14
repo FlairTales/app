@@ -3,6 +3,7 @@ package com.example.android.homepage;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -128,6 +129,24 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             }
         });
 
+        Button veri = (Button) findViewById(R.id.verify_email);
+        veri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmailVerification();
+            }
+        });
+
+        Button signin = (Button) findViewById(R.id.signIn);
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ema = email.getText().toString().trim();
+                pa = pass.getText().toString().trim();
+                signIn(ema,pa);
+            }
+        });
+
         //mLoginFormView = findViewById(R.id.login_form);
         //mProgressView = findViewById(R.id.login_progress);
     }
@@ -159,7 +178,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            user = mAuth.getCurrentUser();
                             Toast.makeText(SignupActivity.this, "user creation successful !",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(user);
@@ -178,7 +197,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
-        FirebaseUser user = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
 
         if(user.isEmailVerified()) {
             mAuth.signInWithEmailAndPassword(email, password)
@@ -189,6 +208,8 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
                                 Log.d(TAG, "signInWithEmail:success");
                                 Toast.makeText(SignupActivity.this, "SignIn Successful !",
                                         Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SignupActivity.this, SignedInActivity.class);
+                                startActivity(intent);
                             } else {
                                 Log.w(TAG, "signInWithEmail:failure", task.getException());
                                 Toast.makeText(SignupActivity.this, "Authentication failed.",

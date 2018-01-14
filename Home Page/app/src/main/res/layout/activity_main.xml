@@ -18,6 +18,8 @@
             android:text="SignUp"
             android:id="@+id/signUp"/>
 
+
+
     </LinearLayout>
 
     <!-- menu - drawer -->
