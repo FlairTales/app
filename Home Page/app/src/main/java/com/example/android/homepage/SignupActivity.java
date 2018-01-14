@@ -62,7 +62,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+    // private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -76,18 +76,25 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser user;
 
+    private EditText email;
+    private EditText pass;
+    private String ema;
+    private String pa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        // populateAutoComplete();
 
+        email = (EditText) findViewById(R.id.email);
+        pass = (EditText) findViewById(R.id.password);
         mAuth = FirebaseAuth.getInstance();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        //mPasswordView = (EditText) findViewById(R.id.password);
+        /*mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
@@ -96,18 +103,33 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
                 }
                 return false;
             }
-        });
+        }); */
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+            }
+        };
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                ema = email.getText().toString().trim();
+                pa = pass.getText().toString().trim();
+                createAccount(ema,pa);
+                //sendEmailVerification();
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        //mLoginFormView = findViewById(R.id.login_form);
+        //mProgressView = findViewById(R.id.login_progress);
     }
 
     @Override
@@ -205,13 +227,13 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
                 });
     }
 
-    private void populateAutoComplete() {
+    /* private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
         }
 
         getLoaderManager().initLoader(0, null, this);
-    }
+    } */
 
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -238,6 +260,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     /**
      * Callback received when a permissions request has been completed.
      */
+    /*
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -246,7 +269,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
                 populateAutoComplete();
             }
         }
-    }
+    } */
 
 
     /**
@@ -254,10 +277,14 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
+
+    /*
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
         }
+
+
 
         // Reset errors.
         mEmailView.setError(null);
@@ -296,10 +323,12 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            // mAuthTask = new UserLoginTask(email, password);
+            // mAuthTask.execute((Void) null);
         }
     }
+
+    */
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
@@ -405,6 +434,8 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+
+    /*
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
@@ -457,5 +488,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             showProgress(false);
         }
     }
+
+    */
 }
 
