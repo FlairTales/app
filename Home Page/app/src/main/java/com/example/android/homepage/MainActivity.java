@@ -29,12 +29,20 @@ public class MainActivity extends AppCompatActivity {
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Button signUp = (Button) findViewById(R.id.signUp);
-        signUp.setOnClickListener(new View.OnClickListener() {
+        Button signUpWithEmail = (Button) findViewById(R.id.signUpWithEmail);
+        signUpWithEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, EmailPasswordActivity.class);
-                startActivity(intent);
+                Intent intentEmail = new Intent(MainActivity.this, EmailPasswordActivity.class);
+                startActivity(intentEmail);
+            }
+        });
+        Button signUpWithMobile = (Button) findViewById(R.id.signUpWithMobile);
+        signUpWithMobile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentMobile = new Intent(MainActivity.this, PhoneAuthActivity.class);
+                startActivity(intentMobile);
             }
         });
 
