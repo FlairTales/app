@@ -61,9 +61,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             findViewById(R.id.signInLayout).setVisibility(View.VISIBLE);
         }
     }
-    private void signIn(String email, String password) {
+    private void signInEmail(String email, String password) {
         Log.d(TAG, "signIn:" + email);
-        if (!validateForm()) {
+        if (!validateFormEmail()) {
             return;
         }
 
@@ -97,7 +97,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 });
         // [END sign_in_with_email]
     }
-    private boolean validateForm() {
+    private boolean validateFormEmail() {
         boolean valid = true;
 
         String email = mEmailField.getText().toString();
@@ -126,7 +126,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             Intent intentEmail = new Intent(SignInActivity.this, EmailPasswordActivity.class);
             startActivity(intentEmail);
         } else if (i == R.id.signInMetod) {
-            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+            signInEmail(mEmailField.getText().toString(), mPasswordField.getText().toString());
         }
     }
 }

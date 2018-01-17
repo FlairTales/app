@@ -10,17 +10,20 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.homepage.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     //menu hamburger.
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mAuth = FirebaseAuth.getInstance();
 
         //menu - hamburger.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -29,22 +32,17 @@ public class MainActivity extends AppCompatActivity {
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Button signUpWithEmail = (Button) findViewById(R.id.signUpWithEmail);
-        signUpWithEmail.setOnClickListener(new View.OnClickListener() {
+
+        Button signOut = (Button) findViewById(R.id.signOut);
+        signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentEmail = new Intent(MainActivity.this, EmailPasswordActivity.class);
+                mAuth.signOut();
+                Intent intentEmail = new Intent(MainActivity.this, SignInActivity.class);
                 startActivity(intentEmail);
             }
         });
-        Button signUpWithMobile = (Button) findViewById(R.id.signUpWithMobile);
-        signUpWithMobile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentMobile = new Intent(MainActivity.this, PhoneAuthActivity.class);
-                startActivity(intentMobile);
-            }
-        });
+
 
     }
 

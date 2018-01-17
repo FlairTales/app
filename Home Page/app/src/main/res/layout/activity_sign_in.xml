@@ -14,13 +14,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email or Phone"
+        android:hint="Email"
         android:layout_marginTop="150dp"
         android:id="@+id/usernameMethod"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
+        android:inputType="textPassword"
         android:id="@+id/passwordMethod"/>
     <Button
         android:layout_width="wrap_content"
