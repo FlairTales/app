@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:id="@+id/signInLayout"
     tools:context="com.example.android.homepage.SignInActivity">
 
 
