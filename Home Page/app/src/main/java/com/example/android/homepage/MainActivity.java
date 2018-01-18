@@ -1,25 +1,16 @@
 package com.example.android.homepage;
 
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.homepage.R;
 import com.google.firebase.auth.FirebaseAuth;
-
-import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private FirebaseAuth mAuth;
-    TextView body;
-    Typeface descpfont;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,29 +33,28 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        //Button signOut = (Button) findViewById(R.id.signOut);
-       // signOut.setOnClickListener(new View.OnClickListener() {
-       //     @Override
-        //    public void onClick(View v) {
-       //         mAuth.signOut();
-       //         Intent intentEmail = new Intent(MainActivity.this, SignInActivity.class);
-       //         startActivity(intentEmail);
-       //     }
-       // });
+        Button signOut = (Button) findViewById(R.id.signOut);
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Intent intentEmail = new Intent(MainActivity.this, SignInActivity.class);
+                startActivity(intentEmail);
+            }
+        });
 
 
     }
 
     // check_2
     //menu - navigation drawer.
-    Intent intent;
-    Toast toast;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (mToggle.onOptionsItemSelected(item)) {
+        if(mToggle.onOptionsItemSelected(item)){
             return true;
         }
+<<<<<<< HEAD
             switch (item.getItemId()) {
                 case R.id.home:
                     // User chose the "Home" item, show the app settings UI...
@@ -131,5 +120,9 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         // Configure the search info and add any event listeners
         return super.onCreateOptionsMenu(menu);
+=======
+        return super.onOptionsItemSelected(item);
+>>>>>>> parent of 1f40cd9... Kashish
     }
+
 }

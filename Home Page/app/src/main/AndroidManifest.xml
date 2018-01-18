@@ -22,10 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".MainActivity"/>
+=======
+>>>>>>> parent of 1f40cd9... Kashish
         <activity android:name=".EmailPasswordActivity" />
-        <activity android:name=".PhoneAuthActivity"></activity>
+        <activity android:name=".PhoneAuthActivity" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

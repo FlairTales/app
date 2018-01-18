@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
-        android:title="@string/home"
-        android:icon="@drawable/ic_home_black_24dp"/>
+        android:title="Home" />
     <item
         android:id="@+id/trending"
-        android:title="@string/trending"
-        android:icon="@drawable/ic_trending_up_black_24dp"/>
+        android:title="Trending" />
     <item
         android:id="@+id/explore"
-        android:title="@string/explore"
-        android:icon="@drawable/ic_explore_black_24dp"/>
+        android:title="Explore" />
     <item
         android:id="@+id/connect"
-        android:title="@string/connect"
-        android:icon="@drawable/ic_check_black_24dp" />
+        android:title="Connect" />
     <item
-        android:id="@+id/profile"
-        android:title="@string/profile"
-        android:icon="@drawable/ic_account_circle_black_24dp"/>
+        android:id="@+id/search"
+        android:title="Search" />
     <item
         android:id="@+id/settings"
-        android:title="@string/settings"
-        android:icon="@drawable/ic_settings_applications_black_24dp"/>
+        android:title="Settings" />
     <item
         android:id="@+id/logout"
-        android:title="@string/logout"
-        android:icon="@drawable/ic_navigate_before_black_24dp"/>
-
+        android:title="Logout" />
 </menu>
