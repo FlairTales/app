@@ -1,13 +1,17 @@
 package com.example.android.homepage;
 
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.android.homepage.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    Intent intent;
+    Toast toast;
     // check_2
     //menu - navigation drawer.
     @Override
@@ -54,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         if(mToggle.onOptionsItemSelected(item)){
             return true;
         }
-<<<<<<< HEAD
             switch (item.getItemId()) {
                 case R.id.home:
                     // User chose the "Home" item, show the app settings UI...
@@ -120,9 +125,6 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         // Configure the search info and add any event listeners
         return super.onCreateOptionsMenu(menu);
-=======
-        return super.onOptionsItemSelected(item);
->>>>>>> parent of 1f40cd9... Kashish
     }
 
 }
