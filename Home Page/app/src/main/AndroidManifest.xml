@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupActivity"
-            android:label="@string/title_activity_signup" />
+            android:name=".MainActivity"/>
         <activity android:name=".EmailPasswordActivity" />
         <activity android:name=".PhoneAuthActivity"></activity>
     </application>

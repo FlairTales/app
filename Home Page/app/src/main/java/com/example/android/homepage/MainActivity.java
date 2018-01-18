@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.logout:
                     // User chose the "Logout" item, show the app settings UI...
                     mAuth.signOut();
-                    Intent intentEmail = new Intent(MainActivity.this, SignupActivity.class);
+                    Intent intentEmail = new Intent(MainActivity.this, SignInActivity.class);
                     startActivity(intentEmail);
-                    toast = Toast.makeText(this, "Explore", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(this, "Logged Out !", Toast.LENGTH_SHORT);
                     toast.show();
                     return true;
 
