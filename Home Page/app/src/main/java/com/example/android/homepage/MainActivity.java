@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
-                Intent intentEmail = new Intent(MainActivity.this, SignInActivity.class);
+                Intent intentEmail = new Intent(MainActivity.this, PhoneAuthActivity.class);
                 startActivity(intentEmail);
             }
         });

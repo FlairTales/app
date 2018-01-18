@@ -36,8 +36,8 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_email_password);
 
         // Views
-        mStatusTextView = findViewById(R.id.status);
-        mDetailTextView = findViewById(R.id.detail);
+        //mStatusTextView = findViewById(R.id.status);
+        //mDetailTextView = findViewById(R.id.detail);
         mEmailField = findViewById(R.id.field_email);
         mPasswordField = findViewById(R.id.field_password);
 

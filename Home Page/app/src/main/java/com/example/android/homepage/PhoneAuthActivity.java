@@ -1,5 +1,6 @@
 package com.example.android.homepage;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
 
     private ViewGroup mPhoneNumberViews;
-    private ViewGroup mSignedInViews;
+    //private ViewGroup mSignedInViews;
 
     private TextView mStatusText;
     private TextView mDetailText;
@@ -59,7 +60,7 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
     private Button mStartButton;
     private Button mVerifyButton;
     private Button mResendButton;
-    private Button mSignOutButton;
+
 
 
 
@@ -75,7 +76,7 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
 
         // Assign views
         mPhoneNumberViews = findViewById(R.id.phone_auth_fields);
-        mSignedInViews = findViewById(R.id.signed_in_buttons);
+        //mSignedInViews = findViewById(R.id.signed_in_buttons);
 
         mStatusText = findViewById(R.id.status);
         mDetailText = findViewById(R.id.detail);
@@ -86,13 +87,12 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
         mStartButton = findViewById(R.id.button_start_verification);
         mVerifyButton = findViewById(R.id.button_verify_phone);
         mResendButton = findViewById(R.id.button_resend);
-        mSignOutButton = findViewById(R.id.sign_out_button);
 
         // Assign click listeners
         mStartButton.setOnClickListener(this);
         mVerifyButton.setOnClickListener(this);
         mResendButton.setOnClickListener(this);
-        mSignOutButton.setOnClickListener(this);
+
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
@@ -247,6 +247,8 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
                             // [START_EXCLUDE]
                             updateUI(STATE_SIGNIN_SUCCESS, user);
                             // [END_EXCLUDE]
+                            Intent intent = new Intent(PhoneAuthActivity.this, MainActivity.class);
+                            startActivity(intent);
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -278,6 +280,8 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             updateUI(STATE_SIGNIN_SUCCESS, user);
+            Intent intent = new Intent(PhoneAuthActivity.this, MainActivity.class);
+            startActivity(intent);
         } else {
             updateUI(STATE_INITIALIZED);
         }
@@ -339,20 +343,20 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
         if (user == null) {
             // Signed out
             mPhoneNumberViews.setVisibility(View.VISIBLE);
-            mSignedInViews.setVisibility(View.GONE);
+            //mSignedInViews.setVisibility(View.GONE);
 
             mStatusText.setText(R.string.signed_out);
         } else {
             // Signed in
             mPhoneNumberViews.setVisibility(View.GONE);
-            mSignedInViews.setVisibility(View.VISIBLE);
+            //mSignedInViews.setVisibility(View.VISIBLE);
 
             enableViews(mPhoneNumberField, mVerificationField);
             mPhoneNumberField.setText(null);
             mVerificationField.setText(null);
 
             mStatusText.setText(R.string.signed_in);
-            mDetailText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+            //mDetailText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
         }
     }
 
@@ -401,9 +405,6 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.button_resend:
                 resendVerificationCode(mPhoneNumberField.getText().toString(), mResendToken);
-                break;
-            case R.id.sign_out_button:
-                signOut();
                 break;
 
 
