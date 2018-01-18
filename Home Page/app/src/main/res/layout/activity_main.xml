@@ -7,22 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.android.homepage.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Out !"
-            android:id="@+id/signOut"/>
-
-
-    </LinearLayout>
-
     <!-- menu - drawer -->
+
     <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_bar"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"

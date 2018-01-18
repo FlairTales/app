@@ -1,6 +1,5 @@
 package com.example.android.homepage;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +41,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
         mPasswordField = findViewById(R.id.field_password);
 
         // Buttons
-        //findViewById(R.id.email_sign_in_button).setOnClickListener(this);
+        findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.verify_email_button).setOnClickListener(this);
@@ -80,9 +79,6 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            sendEmailVerification();
-                            Intent intent = new Intent(EmailPasswordActivity.this, MainActivity.class);
-                            startActivity(intent);
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -198,9 +194,20 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
     private void updateUI(FirebaseUser user) {
        // hideProgressDialog();
         if (user != null) {
+            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
+                    user.getEmail(), user.isEmailVerified()));
+            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
+            findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
+            findViewById(R.id.email_password_fields).setVisibility(View.GONE);
+            findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
+
+            findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
         } else {
-            //findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
+            mStatusTextView.setText("Signed Out");
+            mDetailTextView.setText(null);
+
+            findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
             findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
             findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
         }
@@ -214,6 +221,8 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
         int i = v.getId();
         if (i == R.id.email_create_account_button) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        } else if (i == R.id.email_sign_in_button) {
+            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
         } else if (i == R.id.sign_out_button) {
             signOut();
         } else if (i == R.id.verify_email_button) {
