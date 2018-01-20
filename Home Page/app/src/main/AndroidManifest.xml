@@ -24,7 +24,11 @@
         </activity>
         <activity android:name=".EmailPasswordActivity" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".HomePageActivity"
+            android:label="@string/title_activity_home_page"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

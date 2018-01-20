@@ -247,7 +247,7 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
                             // [START_EXCLUDE]
                             updateUI(STATE_SIGNIN_SUCCESS, user);
                             // [END_EXCLUDE]
-                            Intent intent = new Intent(PhoneAuthActivity.this, MainActivity.class);
+                            Intent intent = new Intent(PhoneAuthActivity.this, HomePageActivity.class);
                             startActivity(intent);
                         } else {
                             // Sign in failed, display a message and update the UI
@@ -280,7 +280,7 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             updateUI(STATE_SIGNIN_SUCCESS, user);
-            Intent intent = new Intent(PhoneAuthActivity.this, MainActivity.class);
+            Intent intent = new Intent(PhoneAuthActivity.this, HomePageActivity.class);
             startActivity(intent);
         } else {
             updateUI(STATE_INITIALIZED);

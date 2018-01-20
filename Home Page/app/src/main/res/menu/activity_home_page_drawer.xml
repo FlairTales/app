@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/d_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Home" />
+        <item
+            android:id="@+id/d_trending"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Trending" />
+        <item
+            android:id="@+id/d_explore"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Explore" />
+        <item
+            android:id="@+id/d_connect"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Connect" />
+        <item
+            android:id="@+id/d_settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Settings" />
+        <item
+            android:id="@+id/d_logout"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Logout" />
+    </group>
+
+</menu>
