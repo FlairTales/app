@@ -119,13 +119,13 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
         MenuItem searchItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         // Configure the search info and add any event listeners
         return super.onCreateOptionsMenu(menu);
-    }
+    }*/
 
 }
