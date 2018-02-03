@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-
+/*
         //menu - hamburger.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentEmail = new Intent(MainActivity.this, PhoneAuthActivity.class);
                 startActivity(intentEmail);
             }
-        });
+        });*/
 
 
     }
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     Toast toast;
     // check_2
     //menu - navigation drawer.
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

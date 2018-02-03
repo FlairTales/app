@@ -3,6 +3,8 @@ package com.example.android.homepage;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -409,5 +411,15 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
 
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+
     }
 }

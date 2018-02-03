@@ -62,7 +62,7 @@ public class HomePageActivity extends AppCompatActivity
 
     //Search view
     @Override
-    public boolean onCreateOptionsMenu(final Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
 
@@ -244,18 +244,19 @@ public class HomePageActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+            //finish();
+            //super.onBackPressed();
         }
     }
 
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_page, menu);
-        return true;
-    }
 
+
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -269,8 +270,8 @@ public class HomePageActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    } */
-
+    }
+*/
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -286,6 +287,8 @@ public class HomePageActivity extends AppCompatActivity
         } else if (id == R.id.d_explore) {
 
         } else if (id == R.id.d_home) {
+            Intent intentHome = new Intent(HomePageActivity.this, ProfileActivity.class);
+            startActivity(intentHome);
 
         } else if (id == R.id.d_trending) {
 
